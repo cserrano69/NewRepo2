@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PreFinalOp.Models.Person>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesLoad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SharesBought)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesLoad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SharesBought)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
