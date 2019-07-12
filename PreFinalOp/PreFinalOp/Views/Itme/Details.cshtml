@@ -1,0 +1,68 @@
+﻿@model PreFinalOp.Models.Person
+
+<div>
+    <h4>Person</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesLoad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesLoad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SharesBought)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SharesBought)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
