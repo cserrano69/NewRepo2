@@ -92,7 +92,7 @@ namespace PreFinalOp.Models
         public bool newUser(Login login)
         {
             connection();
-            string query = "INSERT INTO Employee VALUES('" + login.Username + "','" + login.Password + ")";
+            string query = "INSERT INTO Person VALUES('" + login.Username + "','" + login.Password + ")";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int i = cmd.ExecuteNonQuery();
@@ -123,7 +123,7 @@ namespace PreFinalOp.Models
                 logins.Add(new Login
                 {
                     ID = Convert.ToInt32(dr["ID"]),
-                    Username = Convert.ToString(dr["Name"]),
+                    Username = Convert.ToString(dr["Username"]),
                     Password = Convert.ToString(dr["Password"])
                 });
             }

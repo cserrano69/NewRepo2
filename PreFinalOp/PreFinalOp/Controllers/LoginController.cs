@@ -71,7 +71,7 @@ namespace PreFinalOp.Controllers
             using (SqlConnection con = new SqlConnection(Helper.GetCon()))
             {
                 con.Open();
-                string query = @"SELECT LoginID FROM Login WHERE Username=@Username AND Password=@Password";
+                string query = @"SELECT LoginID, Username FROM Login WHERE Username=@Username AND Password=@Password";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@Username", lll.Username);
@@ -84,6 +84,7 @@ namespace PreFinalOp.Controllers
                             while (data.Read())
                             {
                                 Session["LoginID"] = data["LoginID"].ToString();
+                                Session["Username"] = data["Username"].ToString();
                             }
                             return RedirectToAction("Profile");
                         }

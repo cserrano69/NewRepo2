@@ -98,5 +98,18 @@ namespace PreFinalOp.Controllers
             return View(person);
         }
 
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                DBHandler dBHandler = new DBHandler();
+                if (dBHandler.DeletePerson(id))
+                {
+                    ViewBag.AlertMsg = "Deleted";
+                }
+                return RedirectToAction("Index");
+            }
+            catch { return View(); }
+        }
     }
 }
