@@ -6,14 +6,34 @@
 <h2>Profile</h2>
 <body>
     <h3>Profile</h3>
-        Welcome @Session["Username"]
+    Welcome @Session["Username"]
     <br />
     <div>
         @Html.ActionLink("Create MF Profile", "Create", "Itme")
     </div>
     <div>
-        @Html.ActionLink("Display MF Profile", "Details", "Itme")
+        @Html.ActionLink("Display MF Profile", "Yikes", "Login")
+    </div>
+    <div>
+        @Html.ActionLink("View Index Pag Di gumana yung pangalawa kasi di gumana", "Index", "Itme")
     </div>
 
+    <div>
+        Name: @Html.ViewData["test"]
+        <br />
+        Amount: @Html.ViewData["Amount"]
+        <br />
+        MF: @Html.ViewData["MF"]
+        <br />
+        NAVPS: @Html.ViewData["NAVPS"]
+        <br />
+        SalesLoad: @Html.ViewData["SalesLoad"]
+        <br />
+        Net Amount: @Html.ViewData["anothertest"]
+        <br />
+        Shares Bought: @Html.ViewData["SharesB"]
+        <br />
+
+    </div>
 
 </body>

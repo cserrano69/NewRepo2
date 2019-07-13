@@ -39,41 +39,44 @@
 
     @using (Html.BeginForm())
     {
-        <div class="bs-example" style="border:2px solid gray;">
+    <div class="bs-example" style="border:2px solid gray;">
 
-            <div class="form-group centerlook">
-                <h1> Login </h1>
-            </div>
-            <div class="form-group centerlook">
-                <label>User Name: </label>
-                @Html.EditorFor(model => model.Username)*
-                @Html.ValidationMessageFor(model => model.Username)
-            </div>
-            <div class="form-group centerlook">
-                <label>Password:</label>
-                @Html.EditorFor(model => model.Password) *
-                @Html.ValidationMessageFor(model => model.Password)
+        <div class="form-group centerlook">
+            <h1> Login </h1>
+        </div>
+        <div class="form-group centerlook">
+            <label>User Name: </label>
+            @Html.EditorFor(model => model.Username)*
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+        <div class="form-group centerlook">
+            <label>Password:</label>
+            @Html.EditorFor(model => model.Password) *
+            @Html.ValidationMessageFor(model => model.Password)
 
-            </div>
-            <div class="form-group error">
-                @if (@ViewBag.Failedcount != null)
-                {
+        </div>
+        <div class="form-group error">
+            @if (@ViewBag.Failedcount != null)
+            {
 
-                    <label> Failed Attempt count is: @ViewBag.Failedcount</label>
-                }
+                <label> Failed Attempt count is: @ViewBag.Failedcount</label>
+            }
 
-                @if (@ViewBag.NotValidUser != null)
-                {
+            @if (@ViewBag.NotValidUser != null)
+            {
 
-                    <label> @ViewBag.NotValidUser</label>
-                }
-            </div>
-            <div class="loginbtn">
+                <label> @ViewBag.NotValidUser</label>
+            }
+        </div>
+        <div class="loginbtn">
 
-                <input type="submit" value="Login" class="btn btn-primary" />
+            <input type="submit" value="Login" class="btn btn-primary" />
+            <input type="button" value="Register" class="btn btn-primary" onclick="location.href='@Url.Action("Register", "Login")'" />
 
+       
+        
             </div>
         </div>
-    }
+        }
 </body>
 </html>  

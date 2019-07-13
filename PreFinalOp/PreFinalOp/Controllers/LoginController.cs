@@ -105,10 +105,11 @@ namespace PreFinalOp.Controllers
         {
             Helper.ValidateLogin();
             var record = new Login();
+            var test = new Person();
             using (SqlConnection con = new SqlConnection(Helper.GetCon()))
             {
                 con.Open();
-                string query = @"SELECT LoginID, Username, Password FROM Login WHERE LoginID=@LoginID";
+                string query = @"SELECT LoginID, Username, Name, Amount, MF, Password FROM Login, Person WHERE LoginID=@LoginID";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@LoginID", Session["LoginID"].ToString());
@@ -121,12 +122,25 @@ namespace PreFinalOp.Controllers
                                 record.ID = int.Parse(sdr["LoginID"].ToString());
                                 record.Username = sdr["Username"].ToString();
                                 record.Password = sdr["Password"].ToString();
+                                test.Name = sdr["Name"].ToString();
+                                test.MF = int.Parse(sdr["MF"].ToString());
+                                test.Amount = Decimal.Parse(sdr["Amount"].ToString());
+
+                                ViewData["test"] = test.Name;
+                                ViewData["Amount"] = test.Amount;
+                                ViewData["MF"] = test.MF;
+                                ViewData["anothertest"] = test.NetAmount;
+                                ViewData["NAVPS"] = test.NAVPS;
+                                ViewData["SalesLoad"] = test.SalesLoad;
+                                ViewData["NetAm"] = test.NetAmount;
+                                ViewData["SharesB"] = test.SharesBought;
+
                             }
                             return View(record);
                         }
                         else
                         {
-                            return RedirectToAction("Index");
+                            return RedirectToAction("Profile");
                         }
                     }
                 }
@@ -151,5 +165,25 @@ namespace PreFinalOp.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            DBHandler dBHandler = new DBHandler();
+            return View(dBHandler.GetLogin().Find(Login => Login.ID == id));
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, Login loginz)
+        {
+            try
+            {
+                DBHandler dBHandler = new DBHandler();
+                dBHandler.UpdateLogin(loginz);
+                return RedirectToAction("Index");
+            }
+            catch { return View(); }
+
+        }
+
     }
-}
+        }

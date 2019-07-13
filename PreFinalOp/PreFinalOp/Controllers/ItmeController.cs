@@ -19,7 +19,7 @@ namespace PreFinalOp.Controllers
             ModelState.Clear();
             return View(dBHandler.GetPeople());
         }
-
+/*
         [HttpGet]
         public ActionResult Create()
         {
@@ -39,7 +39,7 @@ namespace PreFinalOp.Controllers
             }
             return View();
         }
-
+ */
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -65,9 +65,9 @@ namespace PreFinalOp.Controllers
             return View(dBHandler.GetPeople().Find(Person => Person.ID == id));
         }
 
-        public List<SelectListItem> GetListItems()
+        public List<SelectListItem> GetMF()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
+            List<SelectListItem> MF= new List<SelectListItem>();
 
             using (SqlConnection con = new SqlConnection(Helper.GetCon()))
             {
@@ -79,7 +79,7 @@ namespace PreFinalOp.Controllers
                     {
                         while (data.Read())
                         {
-                            items.Add(new SelectListItem
+                            MF.Add(new SelectListItem
                             {
                                 Text = data["Type"].ToString(),
                                 Value = data["ID"].ToString()
@@ -88,16 +88,33 @@ namespace PreFinalOp.Controllers
                     }
                 }
             }
-            return items;
+            return MF;
         }
 
         public ActionResult Add()
         {
             Person person = new Person();
-            person.SelectMF = GetListItems();
+            person.SelectMF = GetMF();
             return View(person);
         }
 
+        [HttpPost]
+        public ActionResult Add(Person person)
+        {
+            using (SqlConnection con = new SqlConnection(Helper.GetCon()))
+            {
+                con.Open();
+                string query = @"INSERT INTO Person VALUES (@Name, @Amount, @MF)";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Name", person.Name);
+                    cmd.Parameters.AddWithValue("@Amount", person.Amount);
+                    cmd.Parameters.AddWithValue("@MF", person.MF);
+                    cmd.ExecuteNonQuery();
+                    return RedirectToAction("Index");
+                }
+            }
+        }
         public ActionResult Delete(int id)
         {
             try

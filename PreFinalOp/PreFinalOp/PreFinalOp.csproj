@@ -128,6 +128,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreatePageModel.cs" />
     <Compile Include="Models\DBHandler.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MF.cs" />
@@ -179,7 +180,9 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Itme\Details.cshtml" />
     <Content Include="Views\Itme\Delete.cshtml" />
-    <Content Include="Views\Itme\Create.cshtml" />
+    <Content Include="Views\Itme\Edit.cshtml" />
+    <Content Include="Views\Login\Yikes.cshtml" />
+    <Content Include="Views\Itme\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
