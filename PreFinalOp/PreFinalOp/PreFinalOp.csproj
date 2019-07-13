@@ -180,9 +180,9 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Itme\Details.cshtml" />
     <Content Include="Views\Itme\Delete.cshtml" />
-    <Content Include="Views\Itme\Edit.cshtml" />
     <Content Include="Views\Login\Yikes.cshtml" />
     <Content Include="Views\Itme\Add.cshtml" />
+    <Content Include="Views\Itme\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

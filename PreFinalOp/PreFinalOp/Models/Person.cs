@@ -18,7 +18,24 @@ namespace PreFinalOp.Models
         public decimal Amount { get; set; }
         public int MF { get; set; }
         public List<SelectListItem> SelectMF { get; set; }
-        public decimal NAVPS = 5.6178M;
+        public decimal NAVPS
+        {
+            get
+            {
+                if (MF == 1)
+                {
+                    return 5.6178M;
+                }
+                else if (MF == 2)
+                {
+                    return 2.7102M;
+                }
+                else
+                {
+                    return 2.3159M;
+                }
+            }
+        }
         public decimal SalesLoad
         {
             get

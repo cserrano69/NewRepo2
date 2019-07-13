@@ -47,12 +47,12 @@ namespace PreFinalOp.Controllers
             return View(dBHandler.GetPeople().Find(Person => Person.ID == id));
         }
         [HttpPost]
-        public ActionResult Edit(int id, Person personz)
+        public ActionResult Edit(int id, Person person)
         {
             try
             {
                 DBHandler dBHandler = new DBHandler();
-                dBHandler.UpdatePerson(personz);
+                dBHandler.UpdatePerson(person);
                 return RedirectToAction("Index");
             }
             catch { return View(); }
